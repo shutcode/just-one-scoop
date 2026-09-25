@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify static game files
+        run: |
+          set -eu
+          test -f index.html
+          test -f just_one_scoop_v11.html
+          test -f README.md
+          test -f AGENTS.md
+          python3 - << 'PY'
+          from pathlib import Path
+
+          game = Path("just_one_scoop_v11.html").read_text(encoding="utf-8")
+          entry = Path("index.html").read_text(encoding="utf-8")
+
+          required = [
+              "<!doctype html>",
+              "就挖一勺",
+              'id="data"',
+              "scoop-v11",
+              "</html>",
+          ]
+          missing = [item for item in required if item not in game]
+          if missing:
+              raise SystemExit("game file missing: " + ", ".join(missing))
+          if "just_one_scoop_v11.html" not in entry:
+              raise SystemExit("index.html does not point at the game")
+          if len(game) < 100_000:
+              raise SystemExit("game file looks truncated")
+          print("ok", len(game), "chars")
+          PY

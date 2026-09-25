@@ -1,0 +1,29 @@
+name: 游戏问题
+description: 游玩、存档或页面打不开时用这个模板
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么
+      description: 期望行为和实际行为。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 怎样复现
+      placeholder: |
+        1. 打开 index.html
+        2. 点击开始
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: 环境
+      placeholder: 浏览器与版本，本地文件还是 GitHub Pages
+    validations:
+      required: true
