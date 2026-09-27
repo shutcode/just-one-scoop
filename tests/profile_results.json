@@ -1,0 +1,134 @@
+{
+  "tests": [
+    {
+      "test": "all four opening selections store isolated complete snapshots",
+      "pass": true,
+      "details": [
+        {
+          "id": "earth/explorer",
+          "edits": 12,
+          "research": 200,
+          "region": "earth"
+        },
+        {
+          "id": "field/explorer",
+          "edits": 13,
+          "research": 211,
+          "region": "camp"
+        },
+        {
+          "id": "earth/hell",
+          "edits": 13,
+          "research": 222,
+          "region": "earth"
+        },
+        {
+          "id": "field/hell",
+          "edits": 13,
+          "research": 233,
+          "region": "camp"
+        }
+      ]
+    },
+    {
+      "test": "restarting one slot leaves the other three unchanged",
+      "pass": true,
+      "details": {
+        "current": "hell",
+        "otherProfilesUnchanged": 3
+      }
+    },
+    {
+      "test": "100 km vehicle cuts world without normal-loot pity inflation",
+      "pass": true,
+      "details": {
+        "km": 100.00000000000072,
+        "edits": 2723,
+        "normalLootCounterUnchanged": true
+      }
+    },
+    {
+      "test": "every deep Earth difficulty stage checks distinct prerequisites",
+      "pass": true,
+      "details": [
+        {
+          "depth": 2,
+          "required": [
+            "oxygen",
+            "filter"
+          ]
+        },
+        {
+          "depth": 13,
+          "required": [
+            "oxygen",
+            "filter",
+            "gas",
+            "support"
+          ]
+        },
+        {
+          "depth": 40,
+          "required": [
+            "oxygen",
+            "pressure",
+            "thermal"
+          ]
+        },
+        {
+          "depth": 450,
+          "required": [
+            "oxygen",
+            "pressure",
+            "thermal",
+            "xrd"
+          ]
+        },
+        {
+          "depth": 800,
+          "required": [
+            "field"
+          ]
+        },
+        {
+          "depth": 3200,
+          "required": [
+            "field",
+            "coolloop"
+          ]
+        },
+        {
+          "depth": 5300,
+          "required": [
+            "field",
+            "coolloop",
+            "center_nav"
+          ]
+        }
+      ]
+    },
+    {
+      "test": "actual file-chooser import V11 JSON",
+      "pass": true,
+      "details": {
+        "inputFormat": "scoop-v11",
+        "campaign": "earth",
+        "edits": 20
+      }
+    },
+    {
+      "test": "actual file-chooser import V12 JSON",
+      "pass": true,
+      "details": {
+        "inputFormat": "scoop-v12",
+        "campaign": "field",
+        "edits": 14
+      }
+    },
+    {
+      "test": "supplemental tests have no browser errors",
+      "pass": true,
+      "details": true
+    }
+  ]
+}

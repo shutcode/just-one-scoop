@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#111d21"><meta name="description" content="就挖一勺：离线单文件地心科学探险。自由挖掘，地球双地图，174个独立知识主题与22类交互实验。"><title>就挖一勺 · 地球的层层谜题 | V13</title>
+<style>/*__CSS__*/</style></head>
+<body>
+<canvas id="terrain" aria-hidden="true"></canvas><canvas id="scene" aria-label="挖掘场景：按住鼠标或手指指向任意方向，键盘方向键也可挖掘"></canvas>
+<div id="hud" hidden>
+ <header class="topbar">
+  <div class="brand"><span class="brandmark">J</span><div><b>就挖一勺</b><small>两种旅程 / VOL. 13</small></div></div>
+  <div class="depthbox"><small id="stratum">地表 · 壤土</small><strong id="depth">0.0 <em>m</em></strong><span id="scienceCount">0 个发现</span></div>
+  <nav><button id="openHome" class="iconbutton" title="玩法选择 / 独立存档"></button><button id="openExpedition" class="iconbutton" title="地球考察站"></button><button id="openBook" class="iconbutton" title="科学手册 (K)"></button><button id="openMap" class="iconbutton" title="地图 (M)"></button><button id="pauseBtn" class="iconbutton" title="设置 / 暂停 (Esc)"></button></nav>
+ </header>
+ <div id="journeyStrip" class="journeyStrip" hidden><div><b id="journeyStage">地表启程</b><small id="journeyDistance">距地心 6,371 km</small></div><button id="journeyGuide">向地心</button><button id="journeyStation">远征站 ↗</button></div>
+ <aside class="mission" id="mission"><small>本次探险</small><h3 id="missionTitle">第一勺，先学会观察</h3><p id="missionText">沿洞壁挖掘，寻找发亮的标本。打开扫描仪会有帮助。</p><div class="track"><i id="missionProgress"></i></div><span id="missionSub">每个选择，都留下不一样的路线。</span></aside>
+ <div class="fieldBar"><button id="fieldStation"><span id="modeTag">EXPLORE</span><b id="fieldRegion">研究营地</b><small>地貌 · 年代 · 技能 ↗</small></button><div id="fieldVitals" hidden></div><button id="safeReturn" title="无条件返回安全站补给">安全站</button><button id="toggleLabels">标签 开</button></div>
+ <button id="miniBtn" class="minimap" title="点击展开；滚轮调整局部地图比例"><div><span>勘探记录</span><small>点击展开 ↗</small></div><canvas id="mini"></canvas><footer><i></i>你走过的路 <span id="miniMode">自动全景</span></footer></button>
+ <div id="signal" hidden><span></span><b id="signalText"></b><button id="inspectBtn">研究 <kbd>E</kbd></button></div>
+ <div class="bottomHud">
+  <div class="toolInfo"><b id="toolName">考察勺</b><span id="toolHint">勺头先接触泥土，慢慢撬开。</span><span id="energyText">能源 100</span></div>
+  <div id="tools" class="toolbelt"></div>
+  <div class="bottomLine"><span id="materialLabel">壤土 · 松软</span><span id="saveStatus">仅本机存档</span><button id="soundBtn">声音：关</button></div>
+ </div>
+ <div id="toast" role="status" aria-live="polite" hidden><div class="toastIcon" id="toastIcon"></div><div><small id="toastTag">新发现</small><b id="toastTitle"></b><p id="toastText"></p><button id="toastLearn" hidden>查看原理与实验 →</button></div><button id="toastClose" class="close small" aria-label="关闭发现提示">×</button><i class="toastTime"></i></div>
+ <div id="chapterToast" hidden><small id="chapterOver"></small><h2 id="chapterName"></h2><p id="chapterDesc"></p></div>
+</div>
+<section id="intro" class="intro launcher" data-campaign="earth" data-difficulty="explorer">
+ <div class="introShade"></div>
+ <div class="launcherShell">
+  <header class="launcherHead"><a class="launcherBrand" href="#" onclick="return false"><span class="brandmark">J</span><span>就挖一勺<small>V13 · 双旅程整合版</small></span></a><span class="launcherTag">ONE WORLD · TWO ADVENTURES</span><button id="resumeRunning" hidden>回到正在玩的旅程 ↗</button></header>
+  <div class="launcherHero"><div><span class="eyebrow">从一勺泥土，走进整颗地球</span><h1>这一次，<br><span>想往哪里出发？</span></h1><p>地心远征回来了。也可以去雪山与海沟，读懂岩层里的时间。<br>两段完整旅程，在同一个游戏里。</p></div><img id="launcherMiner" alt="戴头灯的仓鼠地质调查员" /></div>
+  <div class="campaignCards" role="group" aria-label="选择主玩法">
+   <button class="campaignCard selected" data-campaign="earth" aria-pressed="true">
+    <div class="campaignArt earthArt"><svg viewBox="0 0 500 185" aria-hidden="true"><defs><radialGradient id="homePlanet"><stop offset="0" stop-color="#ffdf84"/><stop offset=".21" stop-color="#e8b164"/><stop offset=".22" stop-color="#cc8850"/><stop offset=".5" stop-color="#d3945a"/><stop offset=".51" stop-color="#a17452"/><stop offset=".94" stop-color="#8b7954"/><stop offset=".95" stop-color="#80b6a3"/></radialGradient><radialGradient id="homeShade" cx=".30" cy=".25"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#061625" stop-opacity=".38"/></radialGradient></defs><circle cx="355" cy="102" r="99" fill="url(#homePlanet)"/><circle cx="355" cy="102" r="99" fill="url(#homeShade)"/><path d="M353 8C370 30 324 45 350 65S374 90 355 102 342 135 363 154 355 173 355 196" fill="none" stroke="#d7fff1" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 4"/><circle cx="355" cy="102" r="5" fill="#fff7cb"/><g fill="#bfd7c8" font-size="11"><text x="20" y="35">同一张连续地球地图</text><text x="20" y="61">地表 → 地幔 → 地核</text><text x="20" y="86">到达地心，再挖向另一侧</text></g><path d="M24 121h62m-9-6 9 6-9 6" stroke="#e6d4a0" fill="none" stroke-width="1.7"/><text x="20" y="157" fill="#e2ce9c" font-size="10" letter-spacing="3">EARTH CROSSING</text></svg><span class="cardBadge">V11 核心回归 · 首选</span></div>
+    <div class="campaignText"><small>01 / 现代地球</small><h2>地心远征</h2><p>连续开图、稀有冲刺、地球全景与接力补给。浅层考察化石矿物，深处用实验认识地核。</p><div><span>完整穿地球</span><span>任意方向</span><span>逐层研发</span></div></div><i class="selectionDot"></i>
+   </button>
+   <button class="campaignCard" data-campaign="field" aria-pressed="false">
+    <div class="campaignArt fieldArt"><svg viewBox="0 0 500 185" aria-hidden="true"><path d="M0 146 59 117 123 128 219 25 299 121 353 72 425 137 500 89V185H0Z" fill="#719995"/><path d="m133 125 86-100 82 100-51-40-13 15-15-20-29 21-6-13Z" fill="#d7dfcb"/><path d="M0 151 117 147 198 109 274 141 357 128 427 154 500 143V185H0Z" fill="#937957"/><path d="M0 169Q80 158 140 163T267 158 410 172 500 159M0 181Q130 168 251 173T500 175" stroke="#c9b082" stroke-width="5" fill="none"/><g stroke="#e6dbc1" fill="none"><path d="M74 74c-24 6-24 34 0 38 22 2 29-28 7-31-14-3-15 17-3 17" stroke-width="2"/><path d="M391 34v-20l22 4-22 7" stroke-width="1.5"/></g><text x="23" y="28" fill="#d4dfca" font-size="11">雪山的海洋化石 / 海沟的沉积记录</text></svg><span class="cardBadge">V12 地标与研究</span></div>
+    <div class="campaignText"><small>02 / 地标地质</small><h2>野外考察</h2><p>走访雪山、澄江、煤系、峡谷与深海。记录年代、保护标本，再用仪器建立证据链。</p><div><span>八个目的地</span><span>独立地层</span><span>标本报告</span></div></div><i class="selectionDot"></i>
+   </button>
+  </div>
+  <div class="launcherBottom"><section class="difficultyBlock"><div class="difficultyLabel"><b>选择难度</b><small>玩法 × 难度，各有自己的存档</small></div><div class="difficultyButtons" role="group" aria-label="选择难度"><button class="selected" data-difficulty="explorer" aria-pressed="true">探索 <small>自由体验 · 适合先玩</small></button><button data-difficulty="hell" aria-pressed="false">地狱 <small>调查环境 · 研发装备</small></button></div><p id="difficultyDescription"></p></section><section class="departure"><p id="campaignDescription"></p><div class="departureActions"><button id="startBtn" class="primary" disabled>正在准备探险…</button><button id="freshBtn" hidden>重新开始本档</button></div><p id="profileState" role="status"></p></section></div>
+  <footer class="launcherFoot"><div><button id="previewLabs">先看看科学实验 ↗</button><button id="importProfile">导入 V11 / V12 / V13 存档</button></div><span>全部资源内嵌 · 无广告 · 无账号 · 科幻深部通行，非现实工程模拟</span></footer>
+ </div>
+</section>
+
+<div id="overlay" hidden>
+ <section id="panel" role="dialog" aria-modal="true" aria-label="游戏面板"><header class="panelHead"><div><span class="eyebrow" id="panelOver">FIELD NOTES</span><h2 id="panelTitle">科学手册</h2></div><button id="panelPin" class="inlineLink" hidden title="暂停知识页闲置自动关闭">保持阅读</button><button id="panelClose" class="close" aria-label="关闭面板">×</button></header><main id="panelBody"></main></section>
+</div>
+<div id="fatal" hidden><h2>这个打开方式没有成功运行游戏</h2><p id="fatalText"></p><p>请把完整 HTML 保存到本地，使用支持 JavaScript 的浏览器打开；若文件管理器只显示预览，需改用浏览器或静态网页托管。游戏资源都在同一个 HTML 中。</p><button onclick="location.reload()">重新加载</button></div>
+<noscript><div style="position:fixed;inset:0;z-index:999;background:#14232b;color:white;padding:30px">当前查看器未启用 JavaScript。请保存 HTML 后用浏览器打开，或由静态网页服务器提供；不需要另外下载图片。</div></noscript>
+<script id="data" type="application/json">/*__DATA__*/</script><script>/*__JS__*/</script>
+</body></html>
