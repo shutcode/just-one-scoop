@@ -1,0 +1,22 @@
+{
+  "game": "just_one_scoop_v13_complete.html",
+  "size": 977765,
+  "sha256": "87edd77421a5205b9e87bde8d29b3b3ad559e574872c1010cd89a69dfb82fc1f",
+  "campaigns": [
+    "earth",
+    "field"
+  ],
+  "difficulties": [
+    "explorer",
+    "hell"
+  ],
+  "knowledge_topics": 174,
+  "lab_families": 22,
+  "skills": 22,
+  "tests": {
+    "core": 28,
+    "supplemental": 7,
+    "webgl": 3
+  },
+  "contains_external_gameplay_dependencies": false
+}

@@ -1,0 +1,21 @@
+{
+  "environment": "Headed Chromium / Xvfb / ANGLE SwiftShader software WebGL; not hardware or FPS benchmarking.",
+  "tests": [
+    {
+      "test": "WebGL modern rendering and digging",
+      "pass": true,
+      "renderer": "WebGL 2",
+      "dug": 29
+    },
+    {
+      "test": "WebGL field and modern workshop share engine",
+      "pass": true,
+      "region": "himalaya"
+    },
+    {
+      "test": "WebGL mode switching and experiment lifecycle",
+      "pass": true,
+      "errors": []
+    }
+  ]
+}

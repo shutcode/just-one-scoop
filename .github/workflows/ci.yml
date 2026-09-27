@@ -15,28 +15,34 @@ jobs:
         run: |
           set -eu
           test -f index.html
+          test -f just_one_scoop_v13_complete.html
           test -f just_one_scoop_v11.html
           test -f README.md
           test -f AGENTS.md
+          test -f source/build.py
           python3 - << 'PY'
           from pathlib import Path
 
-          game = Path("just_one_scoop_v11.html").read_text(encoding="utf-8")
+          game = Path("just_one_scoop_v13_complete.html").read_text(encoding="utf-8")
           entry = Path("index.html").read_text(encoding="utf-8")
+          legacy = Path("just_one_scoop_v11.html").read_text(encoding="utf-8")
 
           required = [
               "<!doctype html>",
               "就挖一勺",
               'id="data"',
-              "scoop-v11",
+              "scoop-v13",
+              "window.SCOOP",
               "</html>",
           ]
           missing = [item for item in required if item not in game]
           if missing:
               raise SystemExit("game file missing: " + ", ".join(missing))
-          if "just_one_scoop_v11.html" not in entry:
+          if "just_one_scoop_v13_complete.html" not in entry:
               raise SystemExit("index.html does not point at the game")
           if len(game) < 100_000:
               raise SystemExit("game file looks truncated")
+          if "scoop-v11" not in legacy:
+              raise SystemExit("legacy V11 file missing scoop-v11 marker")
           print("ok", len(game), "chars")
           PY

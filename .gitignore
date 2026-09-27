@@ -1,18 +1,45 @@
+# OS junk
 .DS_Store
 Thumbs.db
-*.log
+._*
+
+# Editor / temp
 *.swp
 *~
-
-.env
-.env.*
-!.env.example
-
 .idea/
 .vscode/
 *.local
 
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Node / static site leftovers
 node_modules/
 dist/
 _site/
 coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Build artifact from source/build.py
+source/game.js
+
+# QA run logs (keep tests/*_results.json and results.json as evidence)
+*_log.txt
+tests/*_log.txt
+
+# Browser automation leftovers
+playwright-report/
+test-results/
+.cache/
+*.log

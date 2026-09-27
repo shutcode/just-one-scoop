@@ -1,0 +1,554 @@
+{
+  "tests": [
+    {
+      "name": "launcher: two campaigns, two difficulties, gameplay paused",
+      "pass": true,
+      "details": {
+        "errors": [],
+        "topics": 174,
+        "labs": 22,
+        "renderer": "Canvas 2D 兼容模式",
+        "chunks": 30,
+        "dug": 0,
+        "hero": {
+          "x": -92,
+          "y": 120
+        },
+        "pose": {
+          "angle": 0.1,
+          "grip": {
+            "x": -83.04496251249776,
+            "y": 128.89850074982144
+          },
+          "bowl": {
+            "x": -39.26477924026462,
+            "y": 133.29117108228186
+          },
+          "tip": {
+            "x": -21.35470426526016,
+            "y": 135.0881725819248
+          },
+          "forward": {
+            "x": 0.9950041652780258,
+            "y": 0.09983341664682815
+          },
+          "cycle": 0
+        }
+      }
+    },
+    {
+      "name": "modern starts on continuous Earth, not field-camp",
+      "pass": true,
+      "details": {
+        "region": "earth",
+        "hero": {
+          "x": -92,
+          "y": 120
+        },
+        "checkpoints": [
+          {
+            "id": "start",
+            "name": "地表营地",
+            "x": -92,
+            "y": 120
+          }
+        ]
+      }
+    },
+    {
+      "name": "eight-direction bowl and tip both face forward",
+      "pass": true,
+      "details": [
+        [
+          44,
+          18
+        ],
+        [
+          44,
+          18.000000000000014
+        ],
+        [
+          44,
+          18
+        ],
+        [
+          44,
+          18.000000000000025
+        ],
+        [
+          44,
+          18
+        ],
+        [
+          44,
+          18.000000000000014
+        ],
+        [
+          44,
+          18
+        ],
+        [
+          44,
+          18
+        ]
+      ]
+    },
+    {
+      "name": "continuous directional digging and camera follow",
+      "pass": true,
+      "details": {
+        "dx": 879.7669088789556,
+        "camera": 749.0026231646701,
+        "dug": 154
+      }
+    },
+    {
+      "name": "modern fossil hosts valid, diverse minerals, no deep fossils",
+      "pass": true,
+      "details": {
+        "fossils": 10,
+        "deep": [
+          [
+            40,
+            [
+              "olivine",
+              "pyroxene"
+            ]
+          ],
+          [
+            480,
+            [
+              "wadsleyite"
+            ]
+          ],
+          [
+            600,
+            [
+              "ringwoodite"
+            ]
+          ],
+          [
+            1600,
+            [
+              "bridgmanite",
+              "ferropericlase"
+            ]
+          ],
+          [
+            3500,
+            [
+              "alloy"
+            ]
+          ],
+          [
+            5500,
+            [
+              "alloy"
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "name": "profile storage has no mutable shared references",
+      "pass": true,
+      "details": 154
+    },
+    {
+      "name": "field profile begins independently",
+      "pass": true,
+      "details": {
+        "field": "camp",
+        "modernDug": 154
+      }
+    },
+    {
+      "name": "eight field destinations preserve geology and per-region excavation",
+      "pass": true,
+      "details": [
+        [
+          "camp",
+          2
+        ],
+        [
+          "himalaya",
+          6
+        ],
+        [
+          "chengjiang",
+          2
+        ],
+        [
+          "joggins",
+          4
+        ],
+        [
+          "jehol",
+          2
+        ],
+        [
+          "canyon",
+          2
+        ],
+        [
+          "ridge",
+          6
+        ],
+        [
+          "trench",
+          2
+        ]
+      ]
+    },
+    {
+      "name": "return to modern restores same location and route",
+      "pass": true,
+      "details": {
+        "hero": {
+          "x": 787.7669088789556,
+          "y": 118.56724739647022
+        },
+        "dug": 154
+      }
+    },
+    {
+      "name": "hell starts at surface without impossible initial gate",
+      "pass": true,
+      "details": {
+        "depth": 0.002991094409611969,
+        "skills": [
+          "record"
+        ]
+      }
+    },
+    {
+      "name": "depth and dash gates block before consuming inventory",
+      "pass": true,
+      "details": {
+        "charge": 1,
+        "missing": [
+          "oxygen",
+          "filter"
+        ]
+      }
+    },
+    {
+      "name": "equipment + current-stage survey enables work; repeat survey cannot farm",
+      "pass": true,
+      "details": {
+        "stage": "crust",
+        "research": 983
+      }
+    },
+    {
+      "name": "survival pauses in panels and free rescue cannot softlock",
+      "pass": true,
+      "details": {
+        "oxygen": 100,
+        "station": {
+          "id": "soil",
+          "name": "离开表土",
+          "x": 0,
+          "y": 1942.1167028924938
+        },
+        "hero": {
+          "x": 0,
+          "y": 1942.1167028924938
+        }
+      }
+    },
+    {
+      "name": "difficulty profiles retain independent research, skills, world",
+      "pass": true,
+      "details": {
+        "explorer": 154,
+        "hell": 14,
+        "skills": [
+          "record"
+        ]
+      }
+    },
+    {
+      "name": "10 km dash carves actual world, not a depth counter",
+      "pass": true,
+      "details": {
+        "km": 10.000000000000659,
+        "edits": 1156,
+        "normalDelta": 0
+      }
+    },
+    {
+      "name": "geography roundtrip valid in both hemispheres",
+      "pass": true,
+      "details": [
+        0,
+        0,
+        1.6007106751203537e-08,
+        4.547473508864641e-13,
+        1.185836009463428e-11
+      ]
+    },
+    {
+      "name": "174 science pages, 22 interactive labs, no duplicate canvases",
+      "pass": true,
+      "details": {
+        "topics": 174,
+        "labs": 22,
+        "unique": 174
+      }
+    },
+    {
+      "name": "modern fossil dossier stores layers/methods and rewards once",
+      "pass": true,
+      "details": {
+        "title": "海百合茎节",
+        "host": "浅海碳酸盐岩窗口",
+        "age": "ordovician",
+        "methods": [
+          "observe"
+        ]
+      }
+    },
+    {
+      "name": "nonblocking discovery toast closes itself",
+      "pass": true,
+      "details": true
+    },
+    {
+      "name": "Earth/cave maps: buttons, wheel, pan, fit and switch",
+      "pass": true,
+      "details": {
+        "zoomRatio": 1.4,
+        "pan": {
+          "x": -979.8742736338166,
+          "y": -498.84508475903385
+        }
+      }
+    },
+    {
+      "name": "full route through Earth uses real controller/collision, no teleportation",
+      "pass": true,
+      "details": {
+        "log": [
+          {
+            "time": 54.00000000000053,
+            "depth": 2.3153913776442443,
+            "x": -77.68282062211499,
+            "y": 1968.7835979266608,
+            "dug": 481,
+            "center": false,
+            "finished": false
+          },
+          {
+            "time": 108.04000000000258,
+            "depth": 46.32838716872918,
+            "x": -65.42525263508301,
+            "y": 3551.6086814696887,
+            "dug": 818,
+            "center": false,
+            "finished": false
+          },
+          {
+            "time": 162.08000000000462,
+            "depth": 408.21200194512255,
+            "x": -52.72112238046614,
+            "y": 5192.098544783417,
+            "dug": 1227,
+            "center": false,
+            "finished": false
+          },
+          {
+            "time": 216.12000000000666,
+            "depth": 1503.7848278683382,
+            "x": -40.01699212584983,
+            "y": 6832.588408097282,
+            "dug": 1592,
+            "center": false,
+            "finished": false
+          },
+          {
+            "time": 270.16000000000867,
+            "depth": 3504.9336757798974,
+            "x": -24.791181188759307,
+            "y": 8798.703994321539,
+            "dug": 2113,
+            "center": false,
+            "finished": false
+          },
+          {
+            "time": 324.20000000001073,
+            "depth": 5699.790642962296,
+            "x": -6.81115377438044,
+            "y": 11120.472751743122,
+            "dug": 2785,
+            "center": false,
+            "finished": false
+          },
+          {
+            "time": 378.2400000000128,
+            "depth": 5899.352994226016,
+            "x": -0.016772955132031676,
+            "y": 12618.046854185486,
+            "dug": 3087,
+            "center": true,
+            "finished": false
+          },
+          {
+            "time": 432.28000000001487,
+            "depth": 3929.839168639572,
+            "x": -0.016772955131899532,
+            "y": 14787.767180919871,
+            "dug": 3659,
+            "center": true,
+            "finished": false
+          },
+          {
+            "time": 486.32000000001693,
+            "depth": 1781.6733568807863,
+            "x": -0.016772955131770965,
+            "y": 16893.416419192003,
+            "dug": 4250,
+            "center": true,
+            "finished": false
+          },
+          {
+            "time": 540.3599999999922,
+            "depth": 493.13891472931857,
+            "x": -0.016772955131670972,
+            "y": 18533.955472844653,
+            "dug": 4579,
+            "center": true,
+            "finished": false
+          },
+          {
+            "time": 594.399999999943,
+            "depth": 106.80267797474049,
+            "x": -0.01677295513157098,
+            "y": 20174.494526497303,
+            "dug": 4928,
+            "center": true,
+            "finished": false
+          },
+          {
+            "time": 648.4399999998939,
+            "depth": 5.531716444703547,
+            "x": -0.01677295513147363,
+            "y": 21762.63865199165,
+            "dug": 5157,
+            "center": true,
+            "finished": false
+          },
+          {
+            "time": 702.4799999998447,
+            "depth": 0.0015684798185316596,
+            "x": -0.016772955131341208,
+            "y": 23937.260807246952,
+            "dug": 5738,
+            "center": true,
+            "finished": false
+          },
+          {
+            "time": 703.8399999998435,
+            "depth": 0,
+            "x": -0.016772955131337197,
+            "y": 24002.540807246973,
+            "dug": 5740,
+            "center": true,
+            "finished": true
+          }
+        ],
+        "stations": [
+          "start",
+          "soil",
+          "drill",
+          "mantle",
+          "410",
+          "660",
+          "outer",
+          "inner",
+          "center",
+          "exit"
+        ],
+        "end": {
+          "x": -0.01677295513133708,
+          "y": 24004.46080724697
+        },
+        "minCenterKm": 0.012799861385159504,
+        "edits": 7926,
+        "physicalRadius": 12004.460807258689,
+        "geographicRadius": 6371.446080725869
+      }
+    },
+    {
+      "name": "complete map and relay stations survive JSON restore",
+      "pass": true,
+      "details": {
+        "edits": 7926,
+        "stations": 10,
+        "finished": true
+      }
+    },
+    {
+      "name": "import actual V11 save into correct V13 campaign",
+      "pass": true,
+      "details": {
+        "source": "scoop-v11",
+        "target": "scoop-v13",
+        "campaign": "earth",
+        "region": "earth",
+        "edits": 20,
+        "note": "已把 V11 路线、收藏与研究进度迁入现代地球探索档；新增技能从基础开始。"
+      }
+    },
+    {
+      "name": "import actual V12 save into correct V13 campaign",
+      "pass": true,
+      "details": {
+        "source": "scoop-v12",
+        "target": "scoop-v13",
+        "campaign": "field",
+        "region": "camp",
+        "edits": 14,
+        "note": "已迁移 V12，按当前场景放入地质考察档位；保留原地形和研究记录。"
+      }
+    },
+    {
+      "name": "restore after long expedition resets HUD and minimap timers",
+      "pass": true,
+      "details": {
+        "time": 0.25,
+        "lastHUD": -1,
+        "lastMap": -1,
+        "dug": 0
+      }
+    },
+    {
+      "name": "reject invalid campaign or coordinates",
+      "pass": true,
+      "details": 3
+    },
+    {
+      "name": "no script errors and no external runtime requests",
+      "pass": true,
+      "details": {
+        "errors": [],
+        "requests": []
+      }
+    },
+    {
+      "name": "mobile menu usability and pinch zoom, no horizontal overflow",
+      "pass": true,
+      "details": {
+        "layout": {
+          "width": 390,
+          "scroll": 390,
+          "introScroll": 893,
+          "introWidth": 390
+        },
+        "pinch": 2.0,
+        "errors": []
+      }
+    }
+  ],
+  "environment": "Chromium headless; Canvas fallback; actual HTML via DOM injection. Mobile is viewport/touch emulation."
+}
